@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development',
@@ -22,12 +23,20 @@ module.exports = {
       use: [
         'file-loader',
       ],
-    }
+    },
+    {
+      test: /\.css$/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+      ]
+    },
     ]},
   resolve: {
     extensions: ['.jsx', '.js', '.png', '.svg', '.jpg'],
   },
   plugins: [
+    new MiniCssExtractPlugin({filename: 'app.css'}),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'HTTP-тренажёр',
