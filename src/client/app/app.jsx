@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import './app.css';
-import { Button, Container, Paragraph, Title, } from './components/index';
+import { Button, Container, Paragraph, Title, GlobalStyle } from './components/index';
 import { YaPracticumLogo } from './components/YaPracticumLogo/YaPracticumLogo';
 
 const CODES = [404, 500, 304, 200, 503, 403];
@@ -13,6 +12,7 @@ class App extends Component {
   render() {
     return (
       <Container>
+        <GlobalStyle />
         <Title>Тренажёр для работы с запросами</Title>
         <Paragraph>Задание: определи, что получается при нажатии на кнопку. Описание ошибок в шпаргалке.</Paragraph>
         {this.renderButtons()}
